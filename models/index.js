@@ -1,40 +1,25 @@
-const dbConfig = require("../config/db.config.js");
-
-const {Sequelize, Datatype} = require('sequelize');
- 
-// const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const dbConfig = require('../config/dbConfig');
+const Sequelize = require('sequelize');
+const departementModel = require('./departementModel');
+const userModel = require('./userModel');
+const con = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
-//   operatorsAliases: false,
-
-//   pool: {
-//     max: dbConfig.pool.max,
-//     min: dbConfig.pool.min,
-//     acquire: dbConfig.pool.acquire,
-//     idle: dbConfig.pool.idle  
-//   }
 });
 
 
+const Departement = departementModel(con, Sequelize);
+const User = userModel(con, Sequelize);
 
-const db = {};
+Departement.hasMany(User)
+User.belongsTo(Departement)
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-db.departements = require('./departementModel.js')(sequelize, Datatype);
-db.users = require('./userModel.js')(sequelize, Datatype);
-
-db.sequelize.sync({ force: false })
+con.sync({ force: false })
 .then(() => {
     console.log('yes sync')
 })
-
-module.exports = db;
-
-
-
-
-// Departements.hasMoney(User)
-// User.belongsTO(Departements)
+ 
+module.exports = {
+    Departement,
+    User
+};

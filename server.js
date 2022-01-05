@@ -5,6 +5,8 @@ const ejs = require('ejs');
 // const mysql = require('mysql2');
 const cors = require('cors');
 
+const chihaja = require('./models/index');
+
 const app = express();
 
 var corsOptions = {
