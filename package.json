@@ -1,0 +1,31 @@
+{
+  "name": "crud-node-express-sequelize",
+  "version": "1.0.0",
+  "description": "node express crud with sequilize",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadwa55/CRUD-Node-Express-Sequelize.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mysql"
+  ],
+  "author": "salmaJadwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadwa55/CRUD-Node-Express-Sequelize/issues"
+  },
+  "homepage": "https://github.com/jadwa55/CRUD-Node-Express-Sequelize#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.5"
+  }
+}
