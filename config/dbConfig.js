@@ -2,7 +2,7 @@ module.exports = {
     HOST: 'localhost',
     USER: 'root',
     PASSWORD: '',
-    DB: 'seqdb',
+    DB: 'lastest',
     dialect: 'mysql',
 
 
