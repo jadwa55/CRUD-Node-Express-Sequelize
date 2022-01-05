@@ -11,14 +11,16 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+// MIddleware
 app.use(cors(corsOptions));
 
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+//Testiiiiiiiiiiiiing
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Hell!!!." });
 });
 
 // set port, listen for requests
@@ -30,15 +32,3 @@ app.listen(PORT, () => {
 
 
 
-
-
-
-
-
-
-
-
-
-app.listen(5000, () => {
-    console.log('Server is running at port 5000');
-});
