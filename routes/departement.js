@@ -15,12 +15,12 @@ router.get('/', (req, res) =>
       }))
     .catch(err => res.render('error', {error: err})));
 
-// Add a gig
+// Add a depar
 router.post('/add', (req, res) => {
-  let { title, technologies, budget, description, contact_email } = req.body;
+  let { name, technologies, description } = req.body;
   let errors = [];
 
-  // Validate Fields
+  // Validate Inputs
   if(!title) {
     errors.push({ text: 'Please add a title' });
   }
