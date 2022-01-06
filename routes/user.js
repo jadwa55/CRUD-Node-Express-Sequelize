@@ -8,7 +8,7 @@ const { User } = require('../models')
 router
     .route('/users/departement/:deparId')
     .get((rep, res) => {
-        User.findAll().then(user => { 
+        User.findAll({ where: { departementId: rep.params.deparId } }).then(user => { 
             res.render('user/home', {
                 'users' : user
             });
