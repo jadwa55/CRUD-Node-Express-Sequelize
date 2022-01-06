@@ -30,21 +30,24 @@ router
 router
     .route('/departement/edit/:id')
     .get((rep, res) => {
-        Departement.findAll({
+        Departement.findOne({
             where: { id: rep.params.id }
         }).then(dep => {
-            res.json(dep)
+           res.render('depar/edit',{
+              departement : dep  
+           })
         })
     })
     .post((rep, res) => {
 
         Departement.findOne({ where: { id: rep.params.id } })
-            .then(function (project) {
-                project.update({
-                    name: rep.body.name
+            .then(function (departement) {
+                departement.update({
+                    name: rep.body.name,
+                    description: rep.body.description
                 })
-                .then(function (project) {
-                    res.json(project)
+                .then(function (updatedDepartement) {
+                    res.redirect('/departement') 
                 })
             })
             .catch((e) => console.log(e.message))
