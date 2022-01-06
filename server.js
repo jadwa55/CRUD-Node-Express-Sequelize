@@ -15,9 +15,9 @@ var corsOptions = {
 
 const db = require('./config/dbConfig');
 // Test DB
-db.authenticate()
-  .then(() => console.log('Database connected...'))
-  .catch(err => console.log('Error: ' + err))
+// db.authenticate()
+//   .then(() => console.log('Database connected...'))
+//   .catch(err => console.log('Error: ' + err))
 
 
 // MIddleware
