@@ -54,5 +54,15 @@ router
     })
 
 
+router
+    .route('/delete/:deparId')
+    .get((req, res) => {
+        Departement.findOne({
+            where: { id:req.params.deparId }
+        
+        })
+        res.redirect('/departement');
+    
+});
 
 module.exports = router

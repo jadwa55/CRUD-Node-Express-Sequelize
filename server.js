@@ -17,9 +17,11 @@ app.get("/", (req, res) => {
 
 //* Require Routes
 const deparRoute = require('./routes/departement');
+const userRoute = require('./routes/user');
 
 //* Register Our Routes
-app.use('/',deparRoute)
+app.use('/',deparRoute) // '/' prefix
+app.use('/',userRoute)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
