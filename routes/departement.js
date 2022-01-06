@@ -18,7 +18,7 @@ router
         })
             .catch((e) => console.log(e.message))
     })
-    
+
 router
     .route('/departement/:id')
     .get((rep, res) => {
@@ -32,7 +32,6 @@ router
 
         Departement.findOne({ where: { id: rep.params.id } })
             .then(function (project) {
-                // Check if record exists in db
                 project.update({
                     name: rep.body.name
                 })
@@ -48,7 +47,6 @@ router
     .get((rep, res) => {
         Departement.findOne({ where: { id: rep.params.id } })
         .then(function (project) {
-            // Check if record exists in db
             project.update({
                 status: 1
             })
@@ -64,7 +62,6 @@ router
     .get((rep, res) => {
         Departement.findOne({ where: { id: rep.params.id } })
         .then(function (project) {
-            // Check if record exists in db
             project.update({
                 status: 0
             })

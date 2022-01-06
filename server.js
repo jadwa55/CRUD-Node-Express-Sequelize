@@ -13,6 +13,13 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+const db = require('./config/dbConfig');
+// Test DB
+db.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(err => console.log('Error: ' + err))
+
+
 // MIddleware
 app.use(cors(corsOptions));
 
