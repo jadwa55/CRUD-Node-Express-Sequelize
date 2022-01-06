@@ -4,7 +4,7 @@ const db = require('../config/dbConfig');
 const Gig = require('../models/departementModel');
 const Sequelize = require('sequelize');
 const { Departement } = require('../models');
-const departementModel = require('../models/departementModel');
+const departement = require('../models/departementModel');
 const Op = Sequelize.Op;
 
 // Get depar list
@@ -17,32 +17,23 @@ router.get('/', (req, res) =>
 
 // Add a depar
 router.post('/add', (req, res) => {
-  let { name, technologies, description } = req.body;
+  let { name, description } = req.body;
   let errors = [];
 
   // Validate Inputs
-  if(!title) {
-    errors.push({ text: 'Please add a title' });
-  }
-  if(!technologies) {
-    errors.push({ text: 'Please add some technologies' });
+  if(!name) {
+    errors.push({ text: 'Please add a name' });
   }
   if(!description) {
     errors.push({ text: 'Please add a description' });
-  }
-  if(!contact_email) {
-    errors.push({ text: 'Please add a contact email' });
   }
 
   // Check for errors
   if(errors.length > 0) {
     res.render('add', {
       errors,
-      title, 
-      technologies, 
-      budget, 
-      description, 
-      contact_email
+      name, 
+      description
     });
   } else {
     if(!budget) {
@@ -51,18 +42,12 @@ router.post('/add', (req, res) => {
       budget = `$${budget}`;
     }
 
-    // Make lowercase and remove space after comma
-    technologies = technologies.toLowerCase().replace(/,[ ]+/g, ',');
-
     // Insert into table
-    Gig.create({
-      title,
-      technologies,
-      description,
-      budget,
-      contact_email
+    Departement.create({
+      name,
+      description
     })
-      .then(gig => res.redirect('/gigs'))
+      .then(departement => res.redirect('/departement'))
       .catch(err => res.render('error', {error:err.message}))
   }
 });
