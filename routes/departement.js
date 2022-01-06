@@ -21,9 +21,11 @@ router
         res.render('depar/create')
     })
 
-    // Departement.create(rep.body).then(dep => {
-    //     res.render('depar/create')
-    // })
+    .post((rep,res) => {
+        Departement.create(rep.body).then(dep => {
+            res.redirect('/departement')
+        })
+    })
 
 router
     .route('/departement/edit/:id')
