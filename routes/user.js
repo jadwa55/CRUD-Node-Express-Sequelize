@@ -15,6 +15,18 @@ router
         })
     })
 
+router
+    .route('/user/create/:deparId')
+    .get((rep, res) => {
+        res.render('user/create')
+    })
+
+    .post((rep,res) => {
+        User.create(rep.body).then(dep => {
+            res.redirect('/user')
+        })
+    })
+
 
 
 
