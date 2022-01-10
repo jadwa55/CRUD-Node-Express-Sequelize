@@ -9,7 +9,9 @@ router
     .route('/users/departement/:deparId')
     .get((rep, res) => {
         User.findAll({ where: { departementId: rep.params.deparId } }).then(user => { 
+            let salah =  rep.params.deparId;
             res.render('user/home', {
+                'mosiba' : rep.params.deparId,
                 'users' : user
             });
         })
@@ -22,7 +24,7 @@ router
     })
 
     .post((rep,res) => {
-        User.create(rep.body).then(dep => {
+        User.create(rep.body).then(user => {
             res.redirect('/user')
         })
     })
@@ -32,9 +34,9 @@ router
     .get((rep, res) => {
         User.findOne({
             where: { id: rep.params.id }
-        }).then(dep => {
-           res.render('depar/edit',{
-              user : dep  
+        }).then(user => {
+           res.render('user/edit',{
+              user : user  
            })
         })
     })
