@@ -35,24 +35,25 @@ router
     .route('/user/edit/:id')
     .get((rep, res) => {
         User.findOne({
-            where: { id: rep.params.deparId }
+            where: { id: rep.params.id }
         }).then(user => {
-           res.render('user/edit',{
+
+            res.render('user/edit',{
               user : user  
            })
         })
     })
     .post((rep, res) => {
 
-        User.findOne({ where: { id: rep.params.deparId } })
+        User.findOne({ where: { id: rep.params.id} })
             .then(function (user) {
                 user.update({
                     username: rep.body.username,
                     email: rep.body.email,
-                    password: res.body.password
+                    password: rep.body.password
                 })
                 .then(function (updatedUser) {
-                    let useDepId = rep.params.deparId
+                    let useDepId = updatedUser.departementId
                     res.redirect('/users/departement'+'/'+useDepId) 
                 })
             })
