@@ -55,9 +55,9 @@ router
 
 
 router
-    .route('/delete/:deparId')
+    .route('/departement/delete/:deparId')
     .get((req, res) => {
-        Departement.findOne({
+        Departement.destroy({
             where: { id:req.params.deparId }
         
         })
