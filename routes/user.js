@@ -27,6 +27,33 @@ router
         })
     })
 
+router
+    .route('/user/edit/:id')
+    .get((rep, res) => {
+        User.findOne({
+            where: { id: rep.params.id }
+        }).then(dep => {
+           res.render('depar/edit',{
+              user : dep  
+           })
+        })
+    })
+    .post((rep, res) => {
+
+        User.findOne({ where: { id: rep.params.id } })
+            .then(function (user) {
+                user.update({
+                    username: rep.body.username,
+                    email: rep.body.email,
+                    password: res.body.password
+                })
+                .then(function (updatedUser) {
+                    res.redirect('/user/create/:deparId') 
+                })
+            })
+
+            .catch((e) => console.log(e.message))
+    })
 
 
 
