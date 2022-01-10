@@ -61,7 +61,16 @@ router
             .catch((e) => console.log(e.message))
     })
 
+router
+    .route('/user/delete/:id')
+    .get((req, res) => {
 
+        User.destroy({
+            where: { id:req.params.id }
+        
+        })
+        res.redirect('/departement')
+});
 
 
 module.exports = router
